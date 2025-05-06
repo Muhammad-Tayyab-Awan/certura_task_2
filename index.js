@@ -11,8 +11,27 @@ const io = socketIO(server);
 
 app.use(express.static("public"));
 
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "views/index.html"));
+});
+
 app.all(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, "views/not-found.html"));
+});
+
+io.use((socket, next) => {
+  socket.username = socket.handshake.auth.username;
+  next();
+});
+
+io.on("connect", (socket) => {
+  socket.broadcast.emit("new_user_joined", { joinedUsername: socket.username });
+  socket.on("message", ({ message }) => {
+    socket.broadcast.emit("message", {
+      message,
+      fromUsername: socket.username
+    });
+  });
 });
 
 server.listen(port, () => {
