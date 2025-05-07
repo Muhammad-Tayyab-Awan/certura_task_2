@@ -3,6 +3,10 @@
   margin: 0;
   font-family: sans-serif;
 }
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 0;
+}
 body {
   background-color: rgb(179, 158, 120);
   height: calc(100vh - 2rem);
@@ -80,6 +84,7 @@ h1 {
   font-size: medium;
   color: whitesmoke;
   border-radius: 0.45rem;
+  cursor: pointer;
 }
 #snd-btn:focus-visible,
 #msg-inp:focus-visible,
