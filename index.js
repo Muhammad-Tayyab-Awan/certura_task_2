@@ -19,6 +19,8 @@ app.all(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, "views/not-found.html"));
 });
 
+let onlineUsers = [];
+
 io.use((socket, next) => {
   const username = socket.handshake.headers.cookie
     .split(";")
@@ -29,12 +31,21 @@ io.use((socket, next) => {
 });
 
 io.on("connect", (socket) => {
+  onlineUsers.push(socket.username);
+  socket.emit("online_users", { onlineUsers: onlineUsers.length });
+  socket.broadcast.emit("online_users", { onlineUsers: onlineUsers.length });
   socket.broadcast.emit("new_user_joined", { joinedUsername: socket.username });
   socket.on("message", ({ message }) => {
     socket.broadcast.emit("message", {
       message,
       fromUsername: socket.username
     });
+  });
+  socket.on("disconnect", () => {
+    onlineUsers = onlineUsers.filter((value) => {
+      return value !== socket.username;
+    });
+    socket.broadcast.emit("online_users", { onlineUsers: onlineUsers.length });
   });
 });
 
