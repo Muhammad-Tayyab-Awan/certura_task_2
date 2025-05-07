@@ -135,6 +135,11 @@ h1 {
   background-color: rgb(247, 132, 132);
   cursor: pointer;
 }
+#errors {
+  text-align: center;
+  font-size: small;
+  margin-top: 0.5rem;
+}
 .hidden {
   display: none;
 }
