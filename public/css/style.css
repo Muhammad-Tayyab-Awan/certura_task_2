@@ -167,8 +167,24 @@ h1 {
   font-size: small;
   text-align: justify;
 }
+.slide-right {
+  animation: slide_right ease-in-out 500ms 1;
+}
+.slide-left {
+  animation: slide_left ease-in-out 500ms 1;
+}
 @keyframes new_user {
   from {
     transform: translateY(-5rem);
+  }
+}
+@keyframes slide_right {
+  from {
+    transform: translateX(-5rem);
+  }
+}
+@keyframes slide_left {
+  from {
+    transform: translateX(5rem);
   }
 }
