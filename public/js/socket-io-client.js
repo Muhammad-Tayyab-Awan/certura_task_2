@@ -31,6 +31,7 @@ msg_form.addEventListener("submit", (evt) => {
   createNewMessage(message);
   socket.emit("message", { message: message });
   msg_inp.value = "";
+  msg_inp.focus();
 });
 
 function createNewUser(username) {
