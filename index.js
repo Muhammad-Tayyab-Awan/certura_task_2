@@ -1,3 +1,4 @@
+const bodyParser = require("body-parser");
 const express = require("express");
 const http = require("http");
 const path = require("path");
@@ -7,6 +8,9 @@ const app = express();
 const port = 8000;
 const server = http.createServer(app);
 const io = socketIO(server);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static("public"));
 
