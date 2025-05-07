@@ -35,7 +35,8 @@ h1 {
 }
 .msg {
   background-color: coral;
-  width: 40%;
+  max-width: 45%;
+  width: auto;
   height: fit-content;
   border-radius: 0.25rem;
   padding: 0.5rem;
