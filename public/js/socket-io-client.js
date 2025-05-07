@@ -3,6 +3,7 @@ const msg_form = document.querySelector("#form");
 const msg_inp = document.querySelector("#msg-inp");
 const username_input = document.querySelector("#username");
 const username_errors = document.querySelector("#errors");
+const my_username = document.querySelector("#my-username>span");
 
 const socket = io({ autoConnect: false });
 
@@ -22,6 +23,7 @@ username_form.addEventListener("submit", (evt) => {
     return;
   }
   document.cookie = `sca_username=${username}`;
+  my_username.innerText = username;
   socket.connect();
 });
 
@@ -33,6 +35,22 @@ msg_form.addEventListener("submit", (evt) => {
   msg_inp.value = "";
   msg_inp.focus();
 });
+
+function startCounter() {
+  const counter = document.querySelector("#chat-counter>span");
+  let counterSec = 0;
+  setInterval(() => {
+    counterSec++;
+    let hours = parseInt(counterSec / 3600);
+    hours = hours < 10 ? `0${hours}` : hours;
+    let mins =
+      hours > 0 ? parseInt(counterSec / 60) % 60 : parseInt(counterSec / 60);
+    mins = mins < 10 ? `0${mins}` : mins;
+    let secs = counterSec % 60;
+    secs = secs < 10 ? `0${secs}` : secs;
+    counter.innerText = `${hours}:${mins}:${secs}`;
+  }, 1000);
+}
 
 function createNewUser(username) {
   const new_user_p = document.createElement("p");
@@ -72,7 +90,13 @@ function createNewMessage(message, fromUsername = undefined) {
   chat_box.scrollTop = chat_box.scrollHeight;
 }
 
+socket.on("online_users", ({ onlineUsers }) => {
+  const users_online = document.querySelector("#users-online>span");
+  users_online.innerText = onlineUsers;
+});
+
 socket.on("connect", () => {
+  startCounter();
   username_input.value = "";
   username_form.parentNode.classList.toggle("hidden");
 });
