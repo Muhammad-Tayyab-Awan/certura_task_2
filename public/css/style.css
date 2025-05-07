@@ -95,6 +95,7 @@ h1 {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 8;
 }
 #username-modal-body {
   width: 30%;
@@ -105,6 +106,7 @@ h1 {
   top: 2rem;
   left: calc(35% - 1rem);
   border-radius: 0.45rem;
+  z-index: 10;
 }
 #username-modal-body > h2 {
   font-size: large;
@@ -135,4 +137,33 @@ h1 {
 }
 .hidden {
   display: none;
+}
+#new_user {
+  width: auto;
+  height: auto;
+  padding-block: 0.5rem;
+  padding-inline: 0.75rem;
+  background-color: wheat;
+  color: black;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border-radius: 0.45rem;
+  z-index: 5;
+  border: 1px solid black;
+  transform-origin: top;
+  animation: new_user ease-in-out 500ms 1;
+}
+#new_user > h2 {
+  font-size: medium;
+  margin-bottom: 0.5rem;
+}
+#new_user_description {
+  font-size: small;
+  text-align: justify;
+}
+@keyframes new_user {
+  from {
+    transform: translateY(-5rem);
+  }
 }
