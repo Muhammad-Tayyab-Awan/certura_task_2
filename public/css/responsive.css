@@ -14,6 +14,9 @@
     width: 90%;
     left: 5%;
   }
+  #username-modal-body > h2 {
+    font-size: small;
+  }
   #navbar {
     margin-top: 2rem;
     width: 95%;
@@ -37,10 +40,12 @@
     column-gap: 0;
   }
   #msg-inp {
+    font-size: small;
     border-radius: 0;
     width: 85%;
   }
   #snd-btn {
+    font-size: small;
     border-radius: 0;
     width: 15%;
   }
