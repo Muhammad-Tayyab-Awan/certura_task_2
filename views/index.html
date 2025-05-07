@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chat App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <h1>Simple Chat App</h1>
+    <div id="chat-box">
+    </div>
+    <form id="form">
+        <textarea name="message" id="msg-inp"></textarea>
+        <button type="submit" id="snd-btn">Send</button>
+    </form>
+    <div id="username-modal">
+        <form id="username-modal-body" novalidate>
+            <h2>Enter your username to join the chat</h2>
+            <div>
+                <input type="text" name="username" id="username" autofocus>
+                <button type="submit" id="join-btn">Join</button>
+            </div>
+            <p id="errors" class="hidden"></p>
+        </form>
+    </div>
+    <div id="new_user" class="hidden">
+    </div>
+</body>
+<script src="/js/script.js"></script>
+<script src="/js/socket-io-client.js"></script>
+
+</html>
