@@ -9,7 +9,7 @@
 }
 body {
   background-color: rgb(179, 158, 120);
-  height: calc(100vh - 2rem);
+  height: 100vh;
   padding: 1rem;
   color: whitesmoke;
   position: relative;
