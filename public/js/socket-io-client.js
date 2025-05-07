@@ -4,6 +4,7 @@ const msg_inp = document.querySelector("#msg-inp");
 const username_input = document.querySelector("#username");
 const username_errors = document.querySelector("#errors");
 const my_username = document.querySelector("#my-username>span");
+const clr_chat = document.querySelector("#clr-chat");
 
 const socket = io({ autoConnect: false });
 
@@ -35,6 +36,24 @@ msg_form.addEventListener("submit", (evt) => {
   msg_inp.value = "";
   msg_inp.focus();
 });
+
+clr_chat.addEventListener("click", () => {
+  const chat_box = document.querySelector("#chat-box");
+  chat_box.innerHTML = "";
+  chat_box.insertAdjacentElement("afterbegin", clearChat());
+});
+
+function clearChat() {
+  const clr_chat = document.createElement("button");
+  clr_chat.id = "clr-chat";
+  clr_chat.innerText = "Clear Chat";
+  clr_chat.addEventListener("click", () => {
+    const chat_box = document.querySelector("#chat-box");
+    chat_box.innerHTML = "";
+    chat_box.insertAdjacentElement("afterbegin", clearChat());
+  });
+  return clr_chat;
+}
 
 function startCounter() {
   const counter = document.querySelector("#chat-counter>span");
