@@ -20,7 +20,11 @@ app.all(/.*/, (req, res) => {
 });
 
 io.use((socket, next) => {
-  socket.username = socket.handshake.auth.username;
+  const username = socket.handshake.headers.cookie
+    .split(";")
+    .find((cookie) => cookie.trim().startsWith("sca_username="))
+    .split("=")[1];
+  socket.username = username;
   next();
 });
 
