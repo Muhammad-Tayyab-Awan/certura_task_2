@@ -4,13 +4,10 @@
   "description": "Simple chat app using socket.io",
   "main": "index.js",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "socket.io": "^4.8.1"
   },
   "type": "commonjs",
-  "devDependencies": {},
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",

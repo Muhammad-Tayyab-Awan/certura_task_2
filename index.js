@@ -1,11 +1,10 @@
-const dotenv = require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const path = require("path");
 const socketIO = require("socket.io");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 8000;
 const server = http.createServer(app);
 const io = socketIO(server);
 
